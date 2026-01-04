@@ -1,23 +1,23 @@
-name: CI-CD-Pipeline
+name: CI-CD-Pipeline-6710110065
 on:
   push:
-    branches: [ "main" ] 
+    branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - run: echo "Building the application..."
 
-      - name: Run a simple script
-        run: echo "Starting CI/CD Pipeline for 6710110065..."
+  Test:
+    runs-on: ubuntu-latest
+    needs: Build
+    steps:
+      - run: echo "Running automated tests..."
 
-      - name: Simulate Build
-        run: |
-          echo "Building project..."
-          mkdir build
-          echo "Build successful" > build/result.txt
-
-      - name: Simulate Test
-        run: echo "Running tests... All tests passed!"
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: Test
+    steps:
+      - run: echo "Deploying to production server..."
