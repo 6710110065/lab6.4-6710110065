@@ -1,0 +1,23 @@
+name: CI-CD-Pipeline
+on:
+  push:
+    branches: [ "main" ] 
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run a simple script
+        run: echo "Starting CI/CD Pipeline for 6710110065..."
+
+      - name: Simulate Build
+        run: |
+          echo "Building project..."
+          mkdir build
+          echo "Build successful" > build/result.txt
+
+      - name: Simulate Test
+        run: echo "Running tests... All tests passed!"
